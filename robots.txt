@@ -1,0 +1,13 @@
+# robots.txt — ayemanebdr.com
+User-agent: *
+Allow: /
+
+# Bloquer les pages sans intérêt SEO
+Disallow: /admin/
+Disallow: /cdn-cgi/
+
+# Sitemap
+Sitemap: https://ayemanebdr.com/sitemap.xml
+
+# Crawl delay léger pour ne pas surcharger l'hébergeur
+Crawl-delay: 1

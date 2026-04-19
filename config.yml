@@ -1,0 +1,172 @@
+# ═══════════════════════════════════════════════════════
+# Decap CMS — Configuration pour ayemanebdr.com
+# ═══════════════════════════════════════════════════════
+
+backend:
+  name: git-gateway
+  branch: main
+
+# Dossier de stockage des images uploadées via le CMS
+media_folder: "assets/images"
+public_folder: "/assets/images"
+
+# Langue de l'interface du CMS
+locale: fr
+
+collections:
+
+  # ── PROJETS ────────────────────────────────────────
+  - name: "projects"
+    label: "Projets"
+    label_singular: "Projet"
+    folder: "_projects"
+    create: true
+    slug: "{{slug}}"
+    identifier_field: "title_fr"
+    preview_path: "/#project/{{slug}}"
+    summary: "{{title_fr}} — {{category}}"
+    fields:
+
+      - label: "Titre (FR)"
+        name: "title_fr"
+        widget: "string"
+        hint: "Ex: Collection de Personnages"
+
+      - label: "Titre (EN)"
+        name: "title_en"
+        widget: "string"
+        hint: "Ex: Character Collection"
+
+      - label: "Catégorie"
+        name: "category"
+        widget: "select"
+        options:
+          - { label: "Illustration", value: "illustration" }
+          - { label: "Branding", value: "branding" }
+          - { label: "Web Design", value: "web" }
+
+      - label: "Année"
+        name: "year"
+        widget: "string"
+        default: "2025"
+
+      - label: "Client"
+        name: "client"
+        widget: "string"
+        default: "—"
+        required: false
+
+      - label: "Durée (FR)"
+        name: "duration_fr"
+        widget: "string"
+        hint: "Ex: 3 semaines"
+        required: false
+
+      - label: "Durée (EN)"
+        name: "duration_en"
+        widget: "string"
+        hint: "Ex: 3 weeks"
+        required: false
+
+      - label: "Livrables (FR)"
+        name: "deliverables_fr"
+        widget: "string"
+        hint: "Ex: Logo · Charte · Assets"
+        required: false
+
+      - label: "Livrables (EN)"
+        name: "deliverables_en"
+        widget: "string"
+        required: false
+
+      - label: "Accroche (FR)"
+        name: "tagline_fr"
+        widget: "text"
+        hint: "1-2 phrases résumant le projet"
+
+      - label: "Accroche (EN)"
+        name: "tagline_en"
+        widget: "text"
+
+      - label: "Description complète (FR)"
+        name: "description_fr"
+        widget: "markdown"
+        hint: "Utilise les titres ## pour structurer : Le projet, Approche créative, Résultat"
+
+      - label: "Description complète (EN)"
+        name: "description_en"
+        widget: "markdown"
+
+      - label: "Outils utilisés"
+        name: "tools"
+        widget: "select"
+        multiple: true
+        options:
+          - { label: "Adobe Illustrator", value: "illustrator" }
+          - { label: "Adobe Photoshop", value: "photoshop" }
+          - { label: "Figma", value: "figma" }
+          - { label: "Procreate", value: "procreate" }
+          - { label: "Affinity Designer", value: "affinity" }
+          - { label: "Canva", value: "canva" }
+
+      - label: "Image principale (couverture)"
+        name: "cover_image"
+        widget: "image"
+        required: false
+        hint: "Taille recommandée : 1600×700px, JPG"
+
+      - label: "Galerie d'images"
+        name: "gallery"
+        widget: "list"
+        required: false
+        hint: "Ajoute autant d'images que tu veux"
+        field:
+          label: "Image"
+          name: "image"
+          widget: "image"
+
+      - label: "Visible sur le portfolio"
+        name: "published"
+        widget: "boolean"
+        default: true
+
+      - label: "Ordre d'affichage"
+        name: "order"
+        widget: "number"
+        default: 99
+        hint: "Plus le chiffre est petit, plus le projet apparaît en premier"
+
+  # ── PARAMÈTRES DU SITE ─────────────────────────────
+  - name: "settings"
+    label: "Paramètres du site"
+    files:
+
+      - label: "Informations générales"
+        name: "general"
+        file: "_data/settings.yml"
+        fields:
+
+          - label: "Nom affiché"
+            name: "display_name"
+            widget: "string"
+            default: "ayemanebdr"
+
+          - label: "Email professionnel"
+            name: "email"
+            widget: "string"
+            default: "ayemanepro@gmail.com"
+
+          - label: "Instagram URL"
+            name: "instagram"
+            widget: "string"
+            default: "https://www.instagram.com/ayemanebdr/"
+
+          - label: "Behance URL"
+            name: "behance"
+            widget: "string"
+            default: "https://www.behance.net/ayemanebdr"
+
+          - label: "Pinterest URL"
+            name: "pinterest"
+            widget: "string"
+            default: "https://www.pinterest.com/Ayemane_art/"
