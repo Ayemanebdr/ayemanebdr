@@ -1,0 +1,28 @@
+[build]
+  # Build command runs the Node.js script to convert CMS YAML to JSON
+  command = "npm install && npm run build"
+  
+  # Directory to deploy (root for static HTML)
+  publish = "."
+
+[build.environment]
+  # Node.js version for build script
+  NODE_VERSION = "18"
+
+[[redirects]]
+  # Redirect /admin to the admin interface
+  from = "/admin/*"
+  to = "/admin/:splat"
+  status = 200
+
+[[headers]]
+  # Cache projects.json for 1 minute (short cache for CMS updates)
+  for = "/assets/data/projects.json"
+  [headers.values]
+    Cache-Control = "public, max-age=60"
+
+[[headers]]
+  # Cache images for longer
+  for = "/assets/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"

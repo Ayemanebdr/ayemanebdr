@@ -1,0 +1,15 @@
+{
+  "name": "ayemanebdr-portfolio",
+  "version": "1.0.0",
+  "description": "Portfolio de Ayemane - Designer Freelance",
+  "scripts": {
+    "build": "node scripts/build-projects.js",
+    "prebuild": "echo 'Building projects data...'"
+  },
+  "devDependencies": {
+    "js-yaml": "^4.1.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
